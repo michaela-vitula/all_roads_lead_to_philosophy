@@ -16,7 +16,7 @@ public class allRoadsLeadToPhilosophy extends BasicConstants {
     public void setUp() {
         System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
         driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+        // driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
     }
 
     @Test
@@ -24,15 +24,23 @@ public class allRoadsLeadToPhilosophy extends BasicConstants {
         driver.navigate().to(BASE_URL);
         int click = 1;
         String currentUrl = driver.getCurrentUrl();
-        while(!currentUrl.equals(URL_OF_PHILOSOPHY_PAGE)){
-            navigateToNextUrl();
+        /*do {navigateToNextUrl();
             currentUrl = driver.getCurrentUrl();
+            navigateToNextUrl();
             click++;
-            if(currentUrl.equals(URL_OF_PHILOSOPHY_PAGE)) {
+                if(currentUrl.equals(URL_OF_PHILOSOPHY_PAGE))
+        }   while(!currentUrl.equals(URL_OF_PHILOSOPHY_PAGE));*/
+
+        while (!currentUrl.equals(URL_OF_PHILOSOPHY_PAGE)) {
+            navigateToNextUrl();
+            click++;
+            currentUrl = driver.getCurrentUrl();
+            if (currentUrl.equals(URL_OF_PHILOSOPHY_PAGE)) {
                 System.out.println("To reach out Philosophy page it got " + click + " number of clicks. ");
             }
         }
     }
+
     @AfterEach
     public void tearDown() {
         // driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
@@ -43,7 +51,17 @@ public class allRoadsLeadToPhilosophy extends BasicConstants {
     ////html/body/div[3]/div[3]/div[5]/div[1]/p[3]/a[2]
     ///html/body/div[3]/div[3]/div[5]/div[1]/p[3]/a[1]
     public void navigateToNextUrl() {
-        WebElement linkToNextPage = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div[5]/div[1]/p[3]/a[1]"));
+        WebElement linkToNextPage = driver.findElement(By.xpath("//div/p/a[starts-with(@href, '/wiki/')][1]"));
         linkToNextPage.click();
     }
 }
+          /*  }
+        catch(Exception e) {
+            WebElement linkToNextPage = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div[5]/div[1]/p[3]/a[1]"));
+            linkToNextPage.click();
+            ///html/body/div[3]/div[3]/div[5]/div[1]/p[3]/a
+            ///html/body/div[3]/div[3]/div[5]/div[1]/p[3]/text()[3]
+            ///html/body/div[3]/div[3]/div[5]/div[1]/p[2]/a[1]
+        }
+    }
+}                    */
