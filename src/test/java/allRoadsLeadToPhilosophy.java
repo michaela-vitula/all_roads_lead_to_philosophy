@@ -1,4 +1,5 @@
 import constants.BasicConstants;
+import constants.Methods;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,59 +10,44 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class allRoadsLeadToPhilosophy extends BasicConstants {
-    private static WebDriver driver;
+public class allRoadsLeadToPhilosophy {
+    WebDriver driver;
+
 
     @BeforeEach
     public void setUp() {
         System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
         driver = new FirefoxDriver();
-        // driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
     }
 
     @Test
-    public void goFromRandomPageToPhilosophyPage() {
-        driver.navigate().to(BASE_URL);
-        int click = 1;
-        String currentUrl = driver.getCurrentUrl();
-        /*do {navigateToNextUrl();
-            currentUrl = driver.getCurrentUrl();
-            navigateToNextUrl();
-            click++;
-                if(currentUrl.equals(URL_OF_PHILOSOPHY_PAGE))
-        }   while(!currentUrl.equals(URL_OF_PHILOSOPHY_PAGE));*/
+    public void ifTheFirstLinkOfEveryNextArticleIsClickedPageOfPhilosophyIsReached() {
+     /*   driver.navigate().to(BasicConstants.BASE_URL);       --------origin
+        int click = 0;
+        String currentUrl = driver.getCurrentUrl();*/
+        BasicConstants goToRandomWikiPage = new BasicConstants(driver, BasicConstants.BASE_URL);
 
-        while (!currentUrl.equals(URL_OF_PHILOSOPHY_PAGE)) {
+        Methods countAndClickUntilThePhilosophyPageAppears = new Methods(driver);
+        countAndClickUntilThePhilosophyPageAppears.clickingAndCounting(0, driver.getCurrentUrl());
+        /*while (!currentUrl.equals(BasicConstants.URL_OF_PHILOSOPHY_PAGE)) {   ----origin
             navigateToNextUrl();
             click++;
             currentUrl = driver.getCurrentUrl();
-            if (currentUrl.equals(URL_OF_PHILOSOPHY_PAGE)) {
-                System.out.println("To reach out Philosophy page it got " + click + " number of clicks. ");
+            if (currentUrl.equals(BasicConstants.URL_OF_PHILOSOPHY_PAGE)) {
+                System.out.println("To reach out Philosophy page it got " + click + " clicks. ");*/
             }
-        }
-    }
 
     @AfterEach
     public void tearDown() {
-        // driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-        // driver.close();
+        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+        driver.close();
     }
 
     // ----------------------------------------------------------------------------------------------------------
-    ////html/body/div[3]/div[3]/div[5]/div[1]/p[3]/a[2]
-    ///html/body/div[3]/div[3]/div[5]/div[1]/p[3]/a[1]
-    public void navigateToNextUrl() {
+
+   /* public void navigateToNextUrl() {
         WebElement linkToNextPage = driver.findElement(By.xpath("//div/p/a[starts-with(@href, '/wiki/')][1]"));
         linkToNextPage.click();
-    }
+    }*/
 }
-          /*  }
-        catch(Exception e) {
-            WebElement linkToNextPage = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div[5]/div[1]/p[3]/a[1]"));
-            linkToNextPage.click();
-            ///html/body/div[3]/div[3]/div[5]/div[1]/p[3]/a
-            ///html/body/div[3]/div[3]/div[5]/div[1]/p[3]/text()[3]
-            ///html/body/div[3]/div[3]/div[5]/div[1]/p[2]/a[1]
-        }
-    }
-}                    */
