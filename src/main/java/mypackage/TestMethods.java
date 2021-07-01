@@ -1,26 +1,28 @@
-package constants;
+package mypackage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Methods extends BasicConstants {
+public class TestMethods extends GenericPage {
 
     WebDriver driver;
 
-    public Methods(WebDriver driver) {
+    public TestMethods(WebDriver driver) {
         super(driver);
         this.driver = driver;
     }
 
-    public void clickCountAndPrint(int click, String currentUrl) {
+    public void clickCountAndPrint() {
+        int clickCounter = 0;
+        String currentUrl = driver.getCurrentUrl();
         while (!currentUrl.equals(URL_OF_PHILOSOPHY_PAGE)) {
             navigateToNextUrl();
             currentUrl = driver.getCurrentUrl();
-            click++;
+            clickCounter++;
 
             if (currentUrl.equals(URL_OF_PHILOSOPHY_PAGE)) {
-                    System.out.println("It took " + click + " clicks to succesfully reach out Philosophy page. ");
+                    System.out.println("It took " + clickCounter + " clicks to succesfully reach out Philosophy page. ");
             }
         }
     }
