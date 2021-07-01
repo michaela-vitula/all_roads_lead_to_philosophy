@@ -20,7 +20,7 @@ public class Methods extends BasicConstants {
             click++;
 
             if (currentUrl.equals(URL_OF_PHILOSOPHY_PAGE)) {
-                    System.out.println("To succesfully reach out Philosophy page " + click + " number of clicks has been used. ");
+                    System.out.println("It took " + click + " clicks to succesfully reach out Philosophy page. ");
             }
         }
     }
