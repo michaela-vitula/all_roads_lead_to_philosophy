@@ -13,7 +13,7 @@ public class Methods extends BasicConstants {
         this.driver = driver;
     }
 
-    public void clickingAndCounting(int click, String currentUrl) {
+    public void clickCountAndPrint(int click, String currentUrl) {
         while (!currentUrl.equals(URL_OF_PHILOSOPHY_PAGE)) {
             navigateToNextUrl();
             currentUrl = driver.getCurrentUrl();

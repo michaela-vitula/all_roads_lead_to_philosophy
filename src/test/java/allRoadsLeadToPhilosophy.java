@@ -24,7 +24,7 @@ public class allRoadsLeadToPhilosophy {
         BasicConstants openBaseUrl = new BasicConstants(driver, BasicConstants.BASE_URL);
 
         Methods clickAndCountUntilThePhilosophyPageAppears = new Methods(driver);
-        clickAndCountUntilThePhilosophyPageAppears.clickingAndCounting(0, driver.getCurrentUrl());
+        clickAndCountUntilThePhilosophyPageAppears.clickCountAndPrint(0, driver.getCurrentUrl());
     }
 
     @AfterEach
