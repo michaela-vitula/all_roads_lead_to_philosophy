@@ -3,9 +3,9 @@ package constants;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Methods extends BasicConstants {
+
     WebDriver driver;
 
     public Methods(WebDriver driver) {
@@ -13,18 +13,18 @@ public class Methods extends BasicConstants {
         this.driver = driver;
     }
 
-    public void clickingAndCounting(int click, String currentUrl) {
-      /*  click = 0;
-        currentUrl = driver.getCurrentUrl();*/
-        while (!currentUrl.equals(BasicConstants.URL_OF_PHILOSOPHY_PAGE)) {
+    public void clickCountAndPrint(int click, String currentUrl) {
+        while (!currentUrl.equals(URL_OF_PHILOSOPHY_PAGE)) {
             navigateToNextUrl();
-            click++;
             currentUrl = driver.getCurrentUrl();
-            if (currentUrl.equals(BasicConstants.URL_OF_PHILOSOPHY_PAGE)) {
-                System.out.println("To reach out Philosophy page it got " + click + " clicks. ");
+            click++;
+
+            if (currentUrl.equals(URL_OF_PHILOSOPHY_PAGE)) {
+                    System.out.println("To succesfully reach out Philosophy page " + click + " number of clicks has been used. ");
             }
         }
     }
+
     public void navigateToNextUrl() {
         WebElement linkToNextPage = driver.findElement(By.xpath("//div/p/a[starts-with(@href, '/wiki/')][1]"));
         linkToNextPage.click();
