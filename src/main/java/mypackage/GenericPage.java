@@ -1,21 +1,20 @@
-package constants;
+package mypackage;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class BasicConstants {
+public class GenericPage {
         private WebDriver driver;
 
-        public BasicConstants(WebDriver driver) {
+        public GenericPage(WebDriver driver) {
                 this.driver = driver;
         }
 
-        public BasicConstants(WebDriver driver, String BASE_URL) {
+        public GenericPage(WebDriver driver, String BASE_URL) {
                 this(driver);
-                navigateToRandomWikiArticle(BASE_URL);
+                navigateToWikiArticle(BASE_URL);
         }
 
-        public void navigateToRandomWikiArticle(String BASE_URL) {
+        public void navigateToWikiArticle(String BASE_URL) {
                 driver.navigate().to(BASE_URL);
         }
 

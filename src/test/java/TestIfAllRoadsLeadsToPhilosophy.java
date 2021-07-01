@@ -1,5 +1,5 @@
-import constants.BasicConstants;
-import constants.Methods;
+import mypackage.GenericPage;
+import mypackage.TestMethods;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class allRoadsLeadToPhilosophy {
+public class TestIfAllRoadsLeadsToPhilosophy {
 
     WebDriver driver;
 
@@ -16,15 +16,15 @@ public class allRoadsLeadToPhilosophy {
     public void setUp() {
         System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
         driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
     @Test
     public void philosophyPageShouldAppearThenNumberOfClicksShouldPrint() {
-        BasicConstants openBaseUrl = new BasicConstants(driver, BasicConstants.BASE_URL);
+        GenericPage openBaseUrl = new GenericPage(driver, GenericPage.BASE_URL);
 
-        Methods clickAndCountUntilThePhilosophyPageAppears = new Methods(driver);
-        clickAndCountUntilThePhilosophyPageAppears.clickCountAndPrint(0, driver.getCurrentUrl());
+        TestMethods clickAndCountUntilThePhilosophyPageAppears = new TestMethods(driver);
+        clickAndCountUntilThePhilosophyPageAppears.clickCountAndPrint();
     }
 
     @AfterEach
