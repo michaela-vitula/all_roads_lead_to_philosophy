@@ -20,14 +20,11 @@ public class allRoadsLeadToPhilosophy {
     }
 
     @Test
-    public void philosophyPageShouldAppearIfFirstLinksOfArticlesAreUsed() {
+    public void philosophyPageShouldAppearThenNumberOfClicksShouldPrint() {
         BasicConstants openBaseUrl = new BasicConstants(driver, BasicConstants.BASE_URL);
 
         Methods clickAndCountUntilThePhilosophyPageAppears = new Methods(driver);
         clickAndCountUntilThePhilosophyPageAppears.clickingAndCounting(0, driver.getCurrentUrl());
-
-        Methods printOutHowManyClicksDidClickingTake = new Methods(driver);
-        printOutHowManyClicksDidClickingTake.ifPhilosophyPageAppearsPrintNumberOfClicks(click2, driver.getCurrentUrl());
     }
 
     @AfterEach
