@@ -24,12 +24,11 @@ public class TestIfAllRoadsLeadsToPhilosophy {
         GenericPage openBaseUrl = new GenericPage(driver, GenericPage.BASE_URL);
 
         TestMethods clickAndCountUntilThePhilosophyPageAppears = new TestMethods(driver);
-        clickAndCountUntilThePhilosophyPageAppears.clickCountAndPrint();
+        clickAndCountUntilThePhilosophyPageAppears.clickCountAndPrint(0, driver.getCurrentUrl());
     }
 
     @AfterEach
     public void tearDown() {
-        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
         driver.close();
     }
 }

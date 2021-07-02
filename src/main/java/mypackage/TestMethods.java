@@ -13,22 +13,20 @@ public class TestMethods extends GenericPage {
         this.driver = driver;
     }
 
-    public void clickCountAndPrint() {
-        int clickCounter = 0;
-        String currentUrl = driver.getCurrentUrl();
+    public void clickCountAndPrint(int clickCounter, String currentUrl) {
         while (!currentUrl.equals(URL_OF_PHILOSOPHY_PAGE)) {
-            navigateToNextUrl();
-            currentUrl = driver.getCurrentUrl();
-            clickCounter++;
+        navigateToNextUrl();
+        currentUrl = driver.getCurrentUrl();
+        clickCounter++;
 
             if (currentUrl.equals(URL_OF_PHILOSOPHY_PAGE)) {
-                    System.out.println("It took " + clickCounter + " clicks to succesfully reach out Philosophy page. ");
+            System.out.println("It took " + clickCounter + " clicks to succesfully reach out Philosophy page. ");
             }
         }
     }
 
     public void navigateToNextUrl() {
-        WebElement linkToNextPage = driver.findElement(By.xpath("//div/p/a[starts-with(@href, '/wiki/')][1]"));
+        WebElement linkToNextPage = driver.findElement(By.xpath("//div/p/a[starts-with(@href, '/wiki/')]"));
         linkToNextPage.click();
     }
 }
