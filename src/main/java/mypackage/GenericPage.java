@@ -9,17 +9,9 @@ public class GenericPage {
                 this.driver = driver;
         }
 
-        public GenericPage(WebDriver driver, String BASE_URL) {
-                this(driver);
-                navigateToWikiArticle(BASE_URL);
-        }
+//--------- URL CONSTANTS ---------------------------------------------------------------------------------
 
-        public void navigateToWikiArticle(String BASE_URL) {
-                driver.navigate().to(BASE_URL);
-        }
-
-        //--------- URL CONSTANTS
-
-        public static final String BASE_URL = "https://en.wikipedia.org/wiki/War";
         public static final String URL_OF_PHILOSOPHY_PAGE = "https://en.wikipedia.org/wiki/Philosophy";
+        public static final String BASE_URL = "https://en.wikipedia.org/wiki/Main_Page";
+        public static final String URL_OF_LANGUAGE = "https://en.wikipedia.org/wiki/Language";
 }

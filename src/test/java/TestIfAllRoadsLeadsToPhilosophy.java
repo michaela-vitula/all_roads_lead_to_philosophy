@@ -1,4 +1,3 @@
-import mypackage.GenericPage;
 import mypackage.TestMethods;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,19 +15,19 @@ public class TestIfAllRoadsLeadsToPhilosophy {
     public void setUp() {
         System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
         driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     @Test
-    public void philosophyPageShouldAppearThenNumberOfClicksShouldPrint() {
-        GenericPage openBaseUrl = new GenericPage(driver, GenericPage.BASE_URL);
+    public void NumberOfClicksIsCountWhenPageOfPhilosophyIsReached() {
+        TestMethods myMethod = new TestMethods(driver);
 
-        TestMethods clickAndCountUntilThePhilosophyPageAppears = new TestMethods(driver);
-        clickAndCountUntilThePhilosophyPageAppears.clickCountAndPrint(0, driver.getCurrentUrl());
+        myMethod.navigateToRandomWikiArticle();
+        myMethod.goThroughArticlesUntilPhilosophyAppearsThenCountClicks();
     }
 
     @AfterEach
-    public void tearDown() {
+        public void tearDown() {
         driver.close();
     }
 }
